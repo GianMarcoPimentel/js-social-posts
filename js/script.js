@@ -72,34 +72,39 @@ const posts = [
 const sliderElement = document.querySelector("#slider");
 
 for (let i = 0; i < posts.length; i++){
-    const singlePost = document.createElement("section");
     
-    const actualPost = posts[i];
-
+    const singlePost = document.createElement("section");
+    singlePost.className = "posts";
+    
+    const actualPost = posts[i]; 
+   
     for(let key in actualPost){
         const singleDetailPost = document.createElement("div");
-        console.log(actualPost.author.name);
-        /* if (key ) */
+        /* console.log(singleDetailPost);
+        console.log(actualPost.author.name); */
+        singleDetailPost.innerHTML += `${actualPost[key]}`;
         
         if (key == "author"){
-            const profileElement = document.createElement("div");
-            if (key == "image"){
+            const authorElement = document.createElement("div");
+            authorElement.classList.add("autore");
+            console.log(authorElement);
+            singleDetailPost.innerHTML += `${actualPost.author.name}`;
+            console.log(actualPost.author.image);
+        
                 const profileImageElement = document.createElement("img");
                 profileImageElement.src = actualPost.author.image;
-                profileElement.append(profileImageElement);
-                console.log(profileImageElement);
-            } else{
-
-                profileElement.alt = actualPost.author.name;
-            }
+                singlePost.append(profileImageElement);
+                /* console.log(profileImageElement); */
+                
+        
             
-           
+         
             
         } 
-        if (key != "media" ){
-            singleDetailPost.innerHTML += `${actualPost[key]}`;
+        if (key == "media" ){
+            /* singleDetailPost.innerHTML += `${actualPost[key]}`;
             //console.log(singleDetailPost);
-        } else {
+        } else { */
             const postImageElement = document.createElement("img");
             postImageElement.src = actualPost.media;
             postImageElement.alt = actualPost.content;

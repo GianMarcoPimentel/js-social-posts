@@ -130,6 +130,10 @@ section{
 
     background-color: white;
 }
-img{
-    text-align: center;
+section img{
+    height: 300px;
+    order: -1;
+}
+section .posts{
+    display: flex;
 }
