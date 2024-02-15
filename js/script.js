@@ -75,59 +75,71 @@ for (let i = 0; i < posts.length; i++){
    
     
     const singlePost = document.createElement("section");
-    singlePost.className = "posts";
+    /* singlePost.className = "posts"; */
     
+    console.log(singlePost);
     const actualPost = posts[i]; 
-   
     for(let key in actualPost){
-        /* const singleDetailPost = document.createElement("div"); */
+
+        const singleDetailPost = document.createElement("div");
         /* console.log(singleDetailPost);
         console.log(actualPost.author.name); */
         /* singleDetailPost.innerHTML += `${actualPost[key]}`; */
         if (key == "id"){
-            const idElement = document.createElement("div");
-            idElement.classList.add("id");
+            const idElement = "";
+            singleDetailPost.classList.add("id");
             console.log(idElement);
-            idElement.innerHTML = actualPost.id;
-            sliderElement.append(idElement);
+            singleDetailPost.innerHTML = actualPost.id;
+            singleDetailPost.append(idElement);
 
         }
         if (key == "author"){
             const profileImageElement = document.createElement("img");
-            profileImageElement.className = "img-small";
+            profileImageElement.className = "img-small"; 
             profileImageElement.src = actualPost.author.image;
-            sliderElement.append(profileImageElement);
+            singlePost.append(profileImageElement);
             /* console.log(profileImageElement); */
 
-            const authorElement = document.createElement("p");
-            authorElement.className ="autore";
+            const authorElement = "";
+            singleDetailPost.className ="autore";
             console.log(authorElement);
-            authorElement.innerHTML = actualPost.author.name;
-            sliderElement.append(authorElement);
+            singleDetailPost.innerHTML = actualPost.author.name;
+            singleDetailPost.append(authorElement);
             
         } 
-        if (key == "media" ){
+        if (key == "content" ){
             
-            const postImageElement = document.createElement("img");
-            postImageElement.src = actualPost.media;
-            postImageElement.alt = `${actualPost.content}`;
+            const postContentElement = "";
+            postContentElement.className = "content";
+
+            singleDetailPost.innerHTML = actualPost.content;
             
-            sliderElement.append(postImageElement);
+            
+            singlePost.append(postContentElement);
         }
+       
         if(key == "date"){
-            const dateElement = document.createElement("div");
-            dateElement.className = "date";
-            dateElement.innerHTML = actualPost.date;
-            sliderElement.append(dateElement);
+            const dateElement = "";
+            singleDetailPost.className = "date";
+            singleDetailPost.innerHTML = actualPost.date;
+            singleDetailPost.append(dateElement);
         }
         if(key == "likes"){
             const likesElement = document.createElement("div");
-            likesElement.className = "likes";
-            likesElement.innerHTML = actualPost.likes;
-            sliderElement.append(likesElement);
+            singleDetailPost.className = "likes";
+            singleDetailPost.innerHTML = actualPost.likes;
+            singleDetailPost.append(likesElement);
         }
-        
-        sliderElement.append(singlePost);
+         if (key == "media" ){
+            
+            const postImageElement = document.createElement("img");
+            postImageElement.src = actualPost.media;
+            
+            
+            singlePost.append(postImageElement);
+        }
+        singlePost.append(singleDetailPost)
     }
     
+    sliderElement.append(singlePost);
 }
