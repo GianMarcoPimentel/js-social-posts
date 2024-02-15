@@ -76,61 +76,36 @@ for (let i = 0; i < posts.length; i++){
     
     const singlePost = document.createElement("section");
     /* singlePost.className = "posts"; */
-    
+    const singleDetailPost = document.createElement("section1");
+    const singleDetailPost2 = document.createElement("section2")
     console.log(singlePost);
     const actualPost = posts[i]; 
+    console.log(actualPost)
     for(let key in actualPost){
 
-        const singleDetailPost = document.createElement("div");
+       ;
         /* console.log(singleDetailPost);
         console.log(actualPost.author.name); */
         /* singleDetailPost.innerHTML += `${actualPost[key]}`; */
         if (key == "id"){
-            const idElement = "";
-            singleDetailPost.classList.add("id");
+            const idElement = document.createElement("div");
+            idElement.className ="id";
             console.log(idElement);
-            singleDetailPost.innerHTML = actualPost.id;
-            singleDetailPost.append(idElement);
+            idElement.innerHTML = actualPost.id;
+            singlePost.append(idElement);
 
         }
-        if (key == "author"){
-            const profileImageElement = document.createElement("img");
-            profileImageElement.className = "img-small"; 
-            profileImageElement.src = actualPost.author.image;
-            singlePost.append(profileImageElement);
-            /* console.log(profileImageElement); */
-
-            const authorElement = "";
-            singleDetailPost.className ="autore";
-            console.log(authorElement);
-            singleDetailPost.innerHTML = actualPost.author.name;
-            singleDetailPost.append(authorElement);
-            
-        } 
         if (key == "content" ){
             
-            const postContentElement = "";
+            const postContentElement = document.createElement("div");
             postContentElement.className = "content";
 
-            singleDetailPost.innerHTML = actualPost.content;
+            postContentElement.innerHTML = actualPost.content;
             
             
             singlePost.append(postContentElement);
         }
-       
-        if(key == "date"){
-            const dateElement = "";
-            singleDetailPost.className = "date";
-            singleDetailPost.innerHTML = actualPost.date;
-            singleDetailPost.append(dateElement);
-        }
-        if(key == "likes"){
-            const likesElement = document.createElement("div");
-            singleDetailPost.className = "likes";
-            singleDetailPost.innerHTML = actualPost.likes;
-            singleDetailPost.append(likesElement);
-        }
-         if (key == "media" ){
+        if (key == "media" ){
             
             const postImageElement = document.createElement("img");
             postImageElement.src = actualPost.media;
@@ -138,8 +113,38 @@ for (let i = 0; i < posts.length; i++){
             
             singlePost.append(postImageElement);
         }
-        singlePost.append(singleDetailPost)
+        if (key == "author"){
+            const profileImageElement = document.createElement("img");
+            profileImageElement.className = "img-small"; 
+            profileImageElement.src = actualPost.author.image;
+            singlePost.append(profileImageElement);
+
+            
+            /* console.log(profileImageElement); */
+
+            const authorElement = document.createElement("div");
+            authorElement.className ="autore";
+            console.log(authorElement);
+            authorElement.innerHTML = actualPost.author.name;
+            singlePost.append(authorElement);
+            
+        }
+        if(key == "date"){
+            const dateElement = document.createElement("div");
+            dateElement.className = "date";
+            dateElement.innerHTML = actualPost.date;
+            singlePost.append(dateElement);
+        }
+        if(key == "likes"){
+            const likesElement = document.createElement("div");
+            likesElement.className = "likes";
+            likesElement.innerHTML = actualPost.likes;
+            singlePost.append(likesElement);
+        }
     }
+    /* singlePost.append(singleDetailPost)
+    singlePost.append(singleDetailPost2) */
     
     sliderElement.append(singlePost);
+
 }

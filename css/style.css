@@ -147,6 +147,7 @@ section .posts{
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    order: 0;
     
 }
 .id{
