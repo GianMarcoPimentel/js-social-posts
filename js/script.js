@@ -68,7 +68,19 @@ const posts = [
     },
 ];
 
+// memorizzo i miei elementi dello slider
 const sliderElement = document.querySelector("#slider");
-posts.forEach( function() {
-    console.log(posts);
-});
+
+for (let i = 0; i < posts.length; i++){
+    const singlePost = document.createElement("section");
+    
+    const actualPost = posts[i];
+
+    for(let key in actualPost){
+        const singleDetailPost = document.createElement("div");
+        
+        singleDetailPost.innerText += `${key}`
+        console.log(singleDetailPost)
+    }
+    sliderElement.append(singlePost);
+}
