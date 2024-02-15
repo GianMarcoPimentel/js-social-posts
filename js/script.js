@@ -76,11 +76,13 @@ for (let i = 0; i < posts.length; i++){
     
     const singlePost = document.createElement("section");
     /* singlePost.className = "posts"; */
-    const singleDetailPost = document.createElement("section1");
-    const singleDetailPost2 = document.createElement("section2")
+    
+    
     console.log(singlePost);
     const actualPost = posts[i]; 
     console.log(actualPost)
+    const singleDetailPost = document.createElement("section1");
+    
     for(let key in actualPost){
 
        ;
@@ -117,33 +119,37 @@ for (let i = 0; i < posts.length; i++){
             const profileImageElement = document.createElement("img");
             profileImageElement.className = "img-small"; 
             profileImageElement.src = actualPost.author.image;
-            singlePost.append(profileImageElement);
+            singleDetailPost.append(profileImageElement);
 
             
             /* console.log(profileImageElement); */
 
             const authorElement = document.createElement("div");
-            authorElement.className ="autore";
+            
             console.log(authorElement);
-            authorElement.innerHTML = actualPost.author.name;
-            singlePost.append(authorElement);
+            authorElement.innerHTML = `${actualPost.author.name} <br> ${actualPost.date}`;
+            
+            singleDetailPost.append(authorElement);
+            
             
         }
-        if(key == "date"){
+       /*  if(key == "date"){
             const dateElement = document.createElement("div");
             dateElement.className = "date";
+            
             dateElement.innerHTML = actualPost.date;
-            singlePost.append(dateElement);
-        }
+            singleDetailPost.append(dateElement);
+        } */
         if(key == "likes"){
             const likesElement = document.createElement("div");
             likesElement.className = "likes";
-            likesElement.innerHTML = actualPost.likes;
+            likesElement.innerHTML = ` Piace a ${actualPost.likes} persone`;
             singlePost.append(likesElement);
         }
+        singlePost.append(singleDetailPost)
+
     }
-    /* singlePost.append(singleDetailPost)
-    singlePost.append(singleDetailPost2) */
+    
     
     sliderElement.append(singlePost);
 

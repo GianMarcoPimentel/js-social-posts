@@ -123,16 +123,17 @@ h1 {
     color: #0CD977;
     cursor: default;
 } */
-
-#slider{
+section{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 50px;
-    color: black;
-    margin-bottom: 200px;
+    gap: 20px;
 
-    padding : 20px;
+    padding: 20px;
+    color: black;
+    margin: 100px auto;
+
+    
     background-color: white;
 }
 section img{
@@ -147,9 +148,21 @@ section .posts{
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    order: 0;
+    
     
 }
 .id{
     display: none;
+}
+section1{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    order: -1;
+}
+.likes{
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
+    
 }
