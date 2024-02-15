@@ -15,7 +15,7 @@ h1 {
     font-size: calc(1.5rem + 2vw);
     color: white;
 }
-
+/* 
 .main-title {
     text-align: center;
     margin: 24px 0;
@@ -122,4 +122,14 @@ h1 {
 .like-button--liked {
     color: #0CD977;
     cursor: default;
+} */
+
+section{
+    color: black;
+    margin-bottom: 200px;
+
+    background-color: white;
+}
+img{
+    text-align: center;
 }

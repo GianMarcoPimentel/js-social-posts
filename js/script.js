@@ -78,10 +78,36 @@ for (let i = 0; i < posts.length; i++){
 
     for(let key in actualPost){
         const singleDetailPost = document.createElement("div");
+        console.log(actualPost.author.name);
+        /* if (key ) */
         
-        singleDetailPost.innerHTML += `${key}: ${actualPost[key]}`;
-        console.log(singleDetailPost)
+        if (key == "author"){
+            const profileElement = document.createElement("div");
+            if (key == "image"){
+                const profileImageElement = document.createElement("img");
+                profileImageElement.src = actualPost.author.image;
+                profileElement.append(profileImageElement);
+                console.log(profileImageElement);
+            } else{
+
+                profileElement.alt = actualPost.author.name;
+            }
+            
+           
+            
+        } 
+        if (key != "media" ){
+            singleDetailPost.innerHTML += `${actualPost[key]}`;
+            //console.log(singleDetailPost);
+        } else {
+            const postImageElement = document.createElement("img");
+            postImageElement.src = actualPost.media;
+            postImageElement.alt = actualPost.content;
+            //aggiungo alla section
+            singlePost.append(postImageElement);
+        }
         singlePost.append(singleDetailPost)
     }
     sliderElement.append(singlePost);
+    
 }
