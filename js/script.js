@@ -46,10 +46,10 @@ Non è necessario creare date casuali Per le immagini va bene utilizzare qualsia
 const posts = [
     {
         "id": 1,
-        "content": "Tronco d'albero",
+        "content": "Tronco d'albero🌲. I colori dell'autunno",
         "media": "https://unsplash.it/600/300?image=161",
         "author": {
-            "name": "Gian Marco Pimentel",
+            "name": "Marco Rossi",
             "image": "https://unsplash.it/300/300?image=1"
         },
         "likes": 80,
@@ -57,7 +57,7 @@ const posts = [
     },
     {
         "id": 2,
-        "content": "Vecchi disegni e la loro raccolta",
+        "content": "Vecchi disegni e la loro raccolta📚   ✍🏻",
         "media": "https://unsplash.it/600/400?image=998",
         "author": {
             "name": "Sofia Perlari",
@@ -67,6 +67,8 @@ const posts = [
         "date": "2021-09-03"
     },
 ];
-console.log(posts);
 
-posts.forEach
+const sliderElement = document.querySelector("#slider");
+posts.forEach( function() {
+    console.log(posts);
+});
