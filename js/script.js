@@ -79,8 +79,9 @@ for (let i = 0; i < posts.length; i++){
     for(let key in actualPost){
         const singleDetailPost = document.createElement("div");
         
-        singleDetailPost.innerText += `${key}`
+        singleDetailPost.innerHTML += `${key}: ${actualPost[key]}`;
         console.log(singleDetailPost)
+        singlePost.append(singleDetailPost)
     }
     sliderElement.append(singlePost);
 }
