@@ -72,6 +72,7 @@ const posts = [
 const sliderElement = document.querySelector("#slider");
 
 for (let i = 0; i < posts.length; i++){
+   
     
     const singlePost = document.createElement("section");
     singlePost.className = "posts";
@@ -79,40 +80,54 @@ for (let i = 0; i < posts.length; i++){
     const actualPost = posts[i]; 
    
     for(let key in actualPost){
-        const singleDetailPost = document.createElement("div");
+        /* const singleDetailPost = document.createElement("div"); */
         /* console.log(singleDetailPost);
         console.log(actualPost.author.name); */
-        singleDetailPost.innerHTML += `${actualPost[key]}`;
-        
+        /* singleDetailPost.innerHTML += `${actualPost[key]}`; */
+        if (key == "id"){
+            const idElement = document.createElement("div");
+            idElement.classList.add("id");
+            console.log(idElement);
+            idElement.innerHTML = actualPost.id;
+            sliderElement.append(idElement);
+
+        }
         if (key == "author"){
-            const authorElement = document.createElement("div");
-            authorElement.classList.add("autore");
+            const profileImageElement = document.createElement("img");
+            profileImageElement.className = "img-small";
+            profileImageElement.src = actualPost.author.image;
+            sliderElement.append(profileImageElement);
+            /* console.log(profileImageElement); */
+
+            const authorElement = document.createElement("p");
+            authorElement.className ="autore";
             console.log(authorElement);
-            singleDetailPost.innerHTML += `${actualPost.author.name}`;
-            console.log(actualPost.author.image);
-        
-                const profileImageElement = document.createElement("img");
-                profileImageElement.src = actualPost.author.image;
-                singlePost.append(profileImageElement);
-                /* console.log(profileImageElement); */
-                
-        
-            
-         
+            authorElement.innerHTML = actualPost.author.name;
+            sliderElement.append(authorElement);
             
         } 
         if (key == "media" ){
-            /* singleDetailPost.innerHTML += `${actualPost[key]}`;
-            //console.log(singleDetailPost);
-        } else { */
+            
             const postImageElement = document.createElement("img");
             postImageElement.src = actualPost.media;
-            postImageElement.alt = actualPost.content;
-            //aggiungo alla section
-            singlePost.append(postImageElement);
+            postImageElement.alt = `${actualPost.content}`;
+            
+            sliderElement.append(postImageElement);
         }
-        singlePost.append(singleDetailPost)
+        if(key == "date"){
+            const dateElement = document.createElement("div");
+            dateElement.className = "date";
+            dateElement.innerHTML = actualPost.date;
+            sliderElement.append(dateElement);
+        }
+        if(key == "likes"){
+            const likesElement = document.createElement("div");
+            likesElement.className = "likes";
+            likesElement.innerHTML = actualPost.likes;
+            sliderElement.append(likesElement);
+        }
+        
+        sliderElement.append(singlePost);
     }
-    sliderElement.append(singlePost);
     
 }
