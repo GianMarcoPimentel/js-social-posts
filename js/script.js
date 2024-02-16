@@ -95,7 +95,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": "https://unsplash.it/300/300?image=10",
+            "image": null,
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -114,7 +114,10 @@ const posts = [
 ];
 
 // copio il codice html della pagina  ela scrivo trmite JS
-
+/* 
+Milestone 2 
+- Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
+*/
 // ciclo ogni elemento dell'array
 posts.forEach(function(currentPost){ // ha bisogno di un nome che di volta in volta si prenda i singoli elementi dell'array;
 
@@ -134,7 +137,7 @@ posts.forEach(function(currentPost){ // ha bisogno di un nome che di volta in vo
             </div>                    
         </div>
     </div>
-    <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+    <div class="post__text">${currentPost.content}</div>
     <div class="post__image">
         <img src="${currentPost.media}" alt="">
     </div>
@@ -159,7 +162,14 @@ posts.forEach(function(currentPost){ // ha bisogno di un nome che di volta in vo
 
 
 
+/* 
+Milestone 3 
+- Se clicchiamo sul tasto "Mi Piace" 
+cambiamo il colore al testo del bottone 
+e incrementiamo il counter dei likes relativo.
+Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
+*/
 
 
 
