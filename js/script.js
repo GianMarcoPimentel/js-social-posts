@@ -1,4 +1,4 @@
-/* 
+/*
 Descrizione
 Ricreiamo un feed social aggiungendo al layout di base fornito, il nostro script JS in cui:
 
@@ -43,30 +43,49 @@ Non è necessario creare date casuali Per le immagini va bene utilizzare qualsia
 
 */
 
-const posts = [
-    {
-        "id": 1,
-        "content": "Tronco d'albero🌲. I colori dell'autunno",
-        "media": "https://unsplash.it/600/300?image=161",
-        "author": {
-            "name": "Marco Rossi",
-            "image": "https://unsplash.it/300/300?image=1"
-        },
-        "likes": 80,
-        "date": "2021-06-25"
-    },
-    {
-        "id": 2,
-        "content": "Vecchi disegni e la loro raccolta📚   ✍🏻",
-        "media": "https://unsplash.it/600/400?image=998",
-        "author": {
-            "name": "Sofia Giudice",
-            "image": "https://unsplash.it/300/300?image=9"
-        },
-        "likes": 120,
-        "date": "2021-09-03"
-    },
-];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // memorizzo i miei elementi dello slider
 //const sliderElement = document.querySelector("#slider");
@@ -157,10 +176,12 @@ const posts = [
 document.querySelector("#mi-piace").addEventListener("click", function(){
     
 }); */
-const Likeposts = [];
-const containerElement = document.querySelector(".container");
-posts.forEach(function (currentPost) { 
+//const likePosts = [];
+//const containerElement = document.querySelector(".container");
+/* posts.forEach(function (currentPost) { 
     console.log(currentPost);
+    const newPost = document.createElement("div");
+    
     containerElement.innerHTML += `
      <div class="post">
                 <div class="post__header">
@@ -193,6 +214,10 @@ posts.forEach(function (currentPost) {
                 </div>            
             </div>
     `;
+    newPost.className = "post";
+    containerElement.append(newPost);
+
+
 
     const currentLikeButton = document.querySelector(`a[data-postid="1"]`);
     console.log(currentLikeButton)
@@ -200,7 +225,14 @@ posts.forEach(function (currentPost) {
 
     currentLikeButton.addEventListener("click", (e) => { //la 'e' di event
         e.preventDefault();
+        if(!likePosts.includes(currentPost.id)) {
+            likePosts.push(currentPost.id);
+            currentLikeButton.classList.add("like.button-liked")
+            currentPost.likes++;
+
+        }
         //ripassare lezione in classe per capire ciò
-        console.log("click")
+        console.log("click", currentPost.id)
+        
     })
-})
+}) */
