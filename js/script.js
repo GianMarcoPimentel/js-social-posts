@@ -60,7 +60,7 @@ const posts = [
         "content": "Vecchi disegni e la loro raccolta📚   ✍🏻",
         "media": "https://unsplash.it/600/400?image=998",
         "author": {
-            "name": "Sofia Perlari",
+            "name": "Sofia Giudice",
             "image": "https://unsplash.it/300/300?image=9"
         },
         "likes": 120,
@@ -69,13 +69,13 @@ const posts = [
 ];
 
 // memorizzo i miei elementi dello slider
-const sliderElement = document.querySelector("#slider");
+//const sliderElement = document.querySelector("#slider");
 
-for (let i = 0; i < posts.length; i++){
+/* for (let i = 0; i < posts.length; i++){
    
     
     const singlePost = document.createElement("section");
-    /* singlePost.className = "posts"; */
+    // singlePost.className = "posts"; 
     
     
     console.log(singlePost);
@@ -86,9 +86,9 @@ for (let i = 0; i < posts.length; i++){
     for(let key in actualPost){
 
        ;
-        /* console.log(singleDetailPost);
-        console.log(actualPost.author.name); */
-        /* singleDetailPost.innerHTML += `${actualPost[key]}`; */
+        // console.log(singleDetailPost);
+        console.log(actualPost.author.name); 
+        //singleDetailPost.innerHTML += `${actualPost[key]}`; 
         if (key == "id"){
             const idElement = document.createElement("div");
             idElement.className ="id";
@@ -122,7 +122,7 @@ for (let i = 0; i < posts.length; i++){
             singleDetailPost.append(profileImageElement);
 
             
-            /* console.log(profileImageElement); */
+            // console.log(profileImageElement); 
 
             const authorElement = document.createElement("div");
             
@@ -133,13 +133,13 @@ for (let i = 0; i < posts.length; i++){
             
             
         }
-       /*  if(key == "date"){
-            const dateElement = document.createElement("div");
-            dateElement.className = "date";
+        // if(key == "date"){
+         //   const dateElement = document.createElement("div");
+         //   dateElement.className = "date";
             
-            dateElement.innerHTML = actualPost.date;
-            singleDetailPost.append(dateElement);
-        } */
+         //   dateElement.innerHTML = actualPost.date;
+          //  singleDetailPost.append(dateElement);
+       // } 
         if(key == "likes"){
             const likesElement = document.createElement("div");
             likesElement.className = "likes";
@@ -154,3 +154,42 @@ for (let i = 0; i < posts.length; i++){
     sliderElement.append(singlePost);
 
 }
+document.querySelector("#mi-piace").addEventListener("click", function(){
+    
+}); */
+const containerElement = document.querySelector("#container");
+posts.forEach(function(actualPost){
+    console.log(actualpost);
+    containerElement.innerHTML +=`
+    <div class="post">
+                <div class="post__header">
+                    <div class="post-meta">                    
+                        <div class="post-meta__icon">
+                            <img class="profile-pic" src="${actualpost.auhtor.image}" alt="Phil Mangione">                    
+                        </div>
+                        <div class="post-meta__data">
+                            <div class="post-meta__author">${actualpost.auhtor.name}</div>
+                            <div class="post-meta__time">${actualpost.date}</div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="post__text">${actualpost.content}</div>
+                <div class="post__image">
+                    <img src="${actualpost.media}" alt="">
+                </div>
+                <div class="post__footer">
+                    <div class="likes js-likes">
+                        <div class="likes__cta">
+                            <a class="like-button  js-like-button" href="#" data-postid="1">
+                                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="like-button__label">Mi Piace</span>
+                            </a>
+                        </div>
+                        <div class="likes__counter">
+                            Piace a <b id="like-counter-1" class="js-likes-counter">${actualpost.likes}</b> persone
+                        </div>
+                    </div> 
+                </div>            
+            </div>
+    `
+})
