@@ -157,25 +157,26 @@ const posts = [
 document.querySelector("#mi-piace").addEventListener("click", function(){
     
 }); */
-const containerElement = document.querySelector("#container");
-posts.forEach(function(actualPost){
-    console.log(actualpost);
-    containerElement.innerHTML +=`
-    <div class="post">
+const Likeposts = [];
+const containerElement = document.querySelector(".container");
+posts.forEach(function (currentPost) { 
+    console.log(currentPost);
+    containerElement.innerHTML += `
+     <div class="post">
                 <div class="post__header">
                     <div class="post-meta">                    
                         <div class="post-meta__icon">
-                            <img class="profile-pic" src="${actualpost.auhtor.image}" alt="Phil Mangione">                    
+                            <img class="profile-pic" src="${currentPost.author.image}" alt="Phil Mangione">                    
                         </div>
                         <div class="post-meta__data">
-                            <div class="post-meta__author">${actualpost.auhtor.name}</div>
-                            <div class="post-meta__time">${actualpost.date}</div>
+                            <div class="post-meta__author">${currentPost.author.name}</div>
+                            <div class="post-meta__time">${currentPost.date}</div>
                         </div>                    
                     </div>
                 </div>
-                <div class="post__text">${actualpost.content}</div>
+                <div class="post__text">${currentPost.content}</div>
                 <div class="post__image">
-                    <img src="${actualpost.media}" alt="">
+                    <img src="${currentPost.media}" alt="">
                 </div>
                 <div class="post__footer">
                     <div class="likes js-likes">
@@ -186,10 +187,20 @@ posts.forEach(function(actualPost){
                             </a>
                         </div>
                         <div class="likes__counter">
-                            Piace a <b id="like-counter-1" class="js-likes-counter">${actualpost.likes}</b> persone
+                            Piace a <b id="like-counter-${currentPost.id}" class="js-likes-counter">${currentPost.likes}</b> persone
                         </div>
                     </div> 
                 </div>            
             </div>
-    `
+    `;
+
+    const currentLikeButton = document.querySelector(`a[data-postid="1"]`);
+    console.log(currentLikeButton)
+    
+
+    currentLikeButton.addEventListener("click", (e) => { //la 'e' di event
+        e.preventDefault();
+        //ripassare lezione in classe per capire ciò
+        console.log("click")
+    })
 })
