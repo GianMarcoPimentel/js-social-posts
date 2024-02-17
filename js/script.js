@@ -127,6 +127,11 @@ const containerElement = document.querySelector("#container");
 posts.forEach(function(currentPost){ // ha bisogno di un nome che di volta in volta si prenda i singoli elementi dell'array;
     // creo elemento vuoto in html
     const newPost = document.createElement("div");
+
+    //gestisco la data
+    const oldDate = new Date(currentPost.created)
+    //console.log(oldDate)
+    const newDate = oldDate.toLocaleDateString("it-IT");
     //ci scrivo dentro
     newPost.innerHTML = `
             <div class="post">
@@ -137,7 +142,7 @@ posts.forEach(function(currentPost){ // ha bisogno di un nome che di volta in vo
                         </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${currentPost.author.name}</div>
-                            <div class="post-meta__time">${currentPost.created}</div>
+                            <div class="post-meta__time">${newDate}</div>
                         </div>                    
                     </div>
                 </div>
@@ -231,6 +236,16 @@ const currentLikeButton = document.querySelector(`a[data-postid="${currentPost.i
         });
 });
 
+
+const data = new Date (`2021-10-22`)
+
+console.log(data.getDay())
+console.log(data.getFullYear())
+console.log(data.getDate())
+console.log(data.getMonth()+1)
+console.log(data.toLocaleDateString("it-IT"))
+// trovato il metodo per leggere la data in lingua italiana
+// vado a scriverlo nei post
 
 
 
