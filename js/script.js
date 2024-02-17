@@ -112,56 +112,58 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-
+// creo un nuovo array per la Milestone 3
+const likesPosts = [];
 // copio il codice html della pagina  ela scrivo trmite JS
 /* 
 Milestone 2 
 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
 */
+
 // ciclo ogni elemento dell'array
+const containerElement = document.querySelector("#container");
+
+ //console.log(containerElement);
 posts.forEach(function(currentPost){ // ha bisogno di un nome che di volta in volta si prenda i singoli elementi dell'array;
-
-
-    const containerElement = document.querySelector("#container");
-    //console.log(containerElement);
-    containerElement.innerHTML += `
-    <div class="post">
-    <div class="post__header">
-        <div class="post-meta">                    
-            <div class="post-meta__icon">
-                <img class="profile-pic" src="${currentPost.author.image}" alt="Phil Mangione">                    
+    // creo elemento vuoto in html
+    const newPost = document.createElement("div");
+    //ci scrivo dentro
+    newPost.innerHTML = `
+            <div class="post">
+                <div class="post__header">
+                    <div class="post-meta">                    
+                        <div class="post-meta__icon">
+                            <img class="profile-pic" src="${currentPost.author.image}" alt="Phil Mangione">                    
+                        </div>
+                        <div class="post-meta__data">
+                            <div class="post-meta__author">${currentPost.author.name}</div>
+                            <div class="post-meta__time">${currentPost.created}</div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="post__text">${currentPost.content}</div>
+                <div class="post__image">
+                    <img src="${currentPost.media}" alt="">
+                </div>
+                <div class="post__footer">
+                    <div class="likes js-likes">
+                        <div class="likes__cta">
+                            <a class="like-button  js-like-button" href="#" data-postid="${currentPost.id}">
+                                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="like-button__label">Mi Piace</span>
+                            </a>
+                        </div>
+                        <div class="likes__counter">
+                            Piace a <b id="like-counter-${currentPost.id}" class="js-likes-counter">${currentPost.likes}</b> persone
+                        </div>
+                    </div> 
+                </div>            
             </div>
-            <div class="post-meta__data">
-                <div class="post-meta__author">${currentPost.author.name}</div>
-                <div class="post-meta__time">${currentPost.created}</div>
-            </div>                    
-        </div>
-    </div>
-    <div class="post__text">${currentPost.content}</div>
-    <div class="post__image">
-        <img src="${currentPost.media}" alt="">
-    </div>
-    <div class="post__footer">
-        <div class="likes js-likes">
-            <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="${currentPost.id}">
-                    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                    <span class="like-button__label">Mi Piace</span>
-                </a>
-            </div>
-            <div class="likes__counter">
-                Piace a <b id="like-counter-1" class="js-likes-counter">${currentPost.likes}</b> persone
-            </div>
-        </div> 
-    </div>            
-</div>
-    `;
-
-
-});
-
-
-
+    `
+    // gli do una classe 
+    newPost.className = "post"
+    //lo appendo al container
+  containerElement.append(newPost);
 /* 
 Milestone 3 
 - Se clicchiamo sul tasto "Mi Piace" 
@@ -170,17 +172,64 @@ e incrementiamo il counter dei likes relativo.
 Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
 */
+// al click del pulsante
+// devo prendere l'id del post
+// fare push dentro l'array likesPosts
 
+// la proprietà che distingue gli id è data-postid-
+// devo b ersagliare un elemento tramite il suo attributo
+// quindi uso la prorpietà attribute
+// ma devo distinguerle per valore 
+// quindi uso attribute="value";
 
+//console.log(document.querySelectorAll(`a[data-postid="3"]`));
+//console.log(document.querySelectorAll(".like-button"));
+//siccome non devo fare un secondo ciclo lavoro in base all'attributo
 
+//console.log(document.querySelectorAll(`a[data-postid="currentPost.id"]`));
 
+// memorizzo il pulsante del like del post attuale
+// lo prendo sfruttando il fatto che ogni pulsante del like abbia un valore
+// diverso per il parametro (ragionamneto fatto per data-postid="")
+const currentLikeButton = document.querySelector(`a[data-postid="${currentPost.id}"]`);
+//console.log(currentLikeButton);
 
+        currentLikeButton.addEventListener("click", (e) => {
+            // la mi <a> , il mip link sta cercando un href dove portarmi che al momento è #
+            // come impedire a un pulsante di avere comportamente di un link
+            e.preventDefault(); 
+            // blocca il comporatmento di default del click
+            //essendo a si comporatva come un link
+            //console.log("click",currentPost.id); 
+            
+            // ogni volta che clicco il mio pulsante mi comparirà il console "click + l'id del post del pulsante cliccato"
+            // da qua prendo l'id del mio currentpost e pusharlo dntro l'array del post con i like
+            /* likesPosts.push(currentPost.id);
+            console.log(likesPosts) */
+            // controllo se ho gia messo mi piace al post
+            if ( ! likesPosts.includes(currentPost.id)){
+                // aggungo la classe per far si che diventi verde una volt premuto
+                likesPosts.push(currentPost.id);
 
+                currentLikeButton.classList.add("like-button--liked");
+                //aumento il numero likes
+                currentPost.likes += 1;
+                console.log(currentPost.likes)
+                
+                const currentLikeCounter = document.querySelector(`#like-counter-${currentPost.id}`);
+                currentLikeCounter.innerHTML = currentPost.likes;
+               //currentLikeButton.classList.add("like-button liked");
 
-
-
-
-
+               
+            }
+           
+            // vedo che mi prende solo l'ultimo valore e quindi sta sovra scrivendo
+            // mi creo un altro variabile in cui andro a inserire il mio array di oggetti
+            // e poi andrò ad appenderlo nel mio container
+          
+            
+        });
+});
 
 
 
